@@ -1,9 +1,9 @@
-package Service;
+package com.emanuel.rinha_de_backend.Service;
 
-import Controller.Request.PessoaRequest;
-import Controller.Response.PessoaResponse;
-import Entity.Pessoa;
-import Repository.PessoaRepository;
+import com.emanuel.rinha_de_backend.Controller.Request.PessoaRequest;
+import com.emanuel.rinha_de_backend.Controller.Response.PessoaResponse;
+import com.emanuel.rinha_de_backend.Entity.Pessoa;
+import com.emanuel.rinha_de_backend.Repository.PessoaRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

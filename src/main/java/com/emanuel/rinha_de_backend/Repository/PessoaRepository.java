@@ -1,6 +1,6 @@
-package Repository;
+package com.emanuel.rinha_de_backend.Repository;
 
-import Entity.Pessoa;
+import com.emanuel.rinha_de_backend.Entity.Pessoa;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

@@ -1,6 +1,6 @@
-package Controller;
+package com.emanuel.rinha_de_backend.Controller;
 
-import Service.PessoaService;
+import com.emanuel.rinha_de_backend.Service.PessoaService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

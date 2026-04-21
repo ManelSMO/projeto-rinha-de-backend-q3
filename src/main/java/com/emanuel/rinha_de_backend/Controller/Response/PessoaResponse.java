@@ -1,4 +1,4 @@
-package Controller.Response;
+package com.emanuel.rinha_de_backend.Controller.Response;
 
 import lombok.Builder;
 

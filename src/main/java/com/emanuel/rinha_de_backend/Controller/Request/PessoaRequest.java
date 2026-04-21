@@ -1,4 +1,4 @@
-package Controller.Request;
+package com.emanuel.rinha_de_backend.Controller.Request;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;

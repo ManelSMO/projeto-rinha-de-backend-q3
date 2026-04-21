@@ -1,4 +1,4 @@
-package Entity;
+package com.emanuel.rinha_de_backend.Entity;
 
 import jakarta.persistence.*;
 import lombok.*;

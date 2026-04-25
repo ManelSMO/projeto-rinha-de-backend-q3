@@ -45,6 +45,17 @@ public class PessoaService {
         return Arrays.asList(stack.split(";"));
     }
 
+    //Medoto auxiliar de converter a entity para response, para a busca por termo
+    private PessoaResponse converterParaResponse(Pessoa pessoa){
+        return new PessoaResponse(
+                pessoa.getId(),
+                pessoa.getApelido(),
+                pessoa.getNome(),
+                pessoa.getNascimento(),
+                converterStringStack(pessoa.getStack())
+        );
+    }
+
     //Metodo create pessoa com as validacoes dos metodos auxiliares
     public PessoaResponse create(PessoaRequest pessoaRequest) {
         //Utilizo o metodo criado na repository para validar se o apelido existe
@@ -65,13 +76,7 @@ public class PessoaService {
         Pessoa pessoaSave = pessoaRepository.save(pessoa);
 
         //Retorno a response para o usuario
-        return new PessoaResponse(
-                pessoaSave.getId(),
-                pessoaSave.getApelido(),
-                pessoaSave.getNome(),
-                pessoaSave.getNascimento(),
-                converterStringStack(pessoaSave.getStack())
-        );
+        return converterParaResponse(pessoaSave);
 
     }
 
@@ -80,13 +85,22 @@ public class PessoaService {
         Pessoa pessoa = pessoaRepository.findById(id)
                 .orElseThrow(()-> new RuntimeException("Pessoa nao encontrada"));
 
-        return new PessoaResponse(
-                pessoa.getId(),
-                pessoa.getApelido(),
-                pessoa.getNome(),
-                pessoa.getNascimento(),
-                converterStringStack(pessoa.getStack())
-        );
+        return converterParaResponse(pessoa);
     }
 
+    //Metodo de busca por termo
+    public List<PessoaResponse> buscarPorTermo(String termo){
+        //Crio a lista de pessoas e adiciono aquelas que se encaixam com o termo de busca -> faz a consulta no banco
+        List<Pessoa> pessoas = pessoaRepository.buscaPorTermo(termo);
+
+        //Converto elas para reponse com o metodo auxiliar criado e retorno para o usuario.
+        return pessoas.stream()
+                .map(this::converterParaResponse)
+                .toList();
+    }
+
+    //Metodo de contagem nao obrigatorio
+    public Long contagemPessoas(){
+        return  pessoaRepository.count();
+    }
 }
